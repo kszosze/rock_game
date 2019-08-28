@@ -1,0 +1,28 @@
+<div class="card my-5">
+    <div class="card-body">
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Rounds</th>
+                    <th scope="col">Player1</th>
+                    <th scope="col">Player2</th>
+                    <th scope="col">Player1 Wins</th>
+                    <th scope="col">Player2 Wins</th>
+                    <th scope="col">Draws</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let game of games">
+                    <td>{{ game.id }}</td>
+                    <td>{{ game.rounds }}</td>
+                    <td>{{ game.players[0].name }}</td>
+                    <td>{{ game.players[1].name }}</td>
+                    <td>{{ game.gameStats["WINS_PLAYER_1"] }}</td>
+                    <td>{{ game.gameStats["WINS_PLAYER_2"] }}</td>
+                    <td>{{ game.gameStats["DRAWS"] }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

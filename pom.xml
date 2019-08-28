@@ -6,8 +6,9 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.1.7.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath/>
 	</parent>
+	<packaging>pom</packaging>
 	<groupId>com.game</groupId>
 	<artifactId>rock-paper-scissor</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
@@ -16,12 +17,27 @@
 
 	<properties>
 		<java.version>1.8</java.version>
+		<node.version>v10.16.0</node.version>
+		<npm.version>6.11.2</npm.version>
 	</properties>
 
+	<modules>
+		<module>rock-game-server</module>
+		<module>rock-game-ui</module>
+	</modules>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -38,32 +54,7 @@
 			<artifactId>commons-lang3</artifactId>
 			<version>3.9</version>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-contract-verifier</artifactId>
-			<version>2.1.1.RELEASE</version>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-            <plugin>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-contract-maven-plugin</artifactId>
-                <version>2.1.1.RELEASE</version>
-                <extensions>true</extensions>
-                <configuration>
-                    <baseClassForTests>
-                        com.game.rockpaperscissor.BaseTestClass
-                    </baseClassForTests>
-                </configuration>
-            </plugin>
-		</plugins>
-	</build>
+	</dependencies>
 
 </project>

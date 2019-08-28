@@ -1,0 +1,47 @@
+<div class="card my-5">
+    <div class="card-body">
+        <ng-component *ngIf="!player.name">
+            <form (ngSubmit)="startGame()" #playerForm="ngForm">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" [(ngModel)]="player.name" class="form-control" id="name" name="name" placeholder="Enter player name" required #name="ngModel">
+                </div>
+                <div [hidden]="!name.pristine" class="alert alert-danger">Name is required</div>
+                <button type="submit" [disabled]="!playerForm.form.valid" class="btn btn-info">Create game</button>
+            </form>
+        </ng-component>
+        <ng-component *ngIf="player.name">
+            <form (ngSubmit)="playGame()" #gameForm="ngForm">
+                <button type="submit" [disabled]="!gameForm.form.valid" class="btn btn-info">Play Game</button>
+            </form>
+        </ng-component>
+        <div>
+            <table class="table table-bordered table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Player1 last choice</th>
+                        <th scope="col">Player2 last choice </th>
+                        <th scope="col">Result</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let game of games">
+                        <td>{{ game.players[0].lastMovement }}</td>
+                        <td>{{ game.players[1].lastMovement }}</td>
+                        <ng-container [ngSwitch]="game.lastRoundResult">
+                            <ng-container *ngSwitchCase="WIN">
+                                <td> Player 1 WIN!</td>
+                            </ng-container>
+                            <ng-container *ngSwitchCase="LOOSE">
+                                <td> Player 2 WIN!</td>
+                            </ng-container>
+                            <ng-container *ngSwitchCase="DRAW">
+                                <td> DRAW</td>
+                            </ng-container>
+                        </ng-container>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

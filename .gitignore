@@ -4,4 +4,8 @@ mvnw.cmd
 
 target/
 
+dist/
 
+
+node_modules/
+node/

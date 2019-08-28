@@ -62,6 +62,7 @@ public class GameService {
         playersList[1].setLastMovement(getRandomMovement());
 
         ResultEnum gameResult = solveGame(playersList[0], playersList[1]);
+        game.setLastRoundResult(gameResult);
 
         if (WIN.equals(gameResult)) {
             playersList[0].incWins();
