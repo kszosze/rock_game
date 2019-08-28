@@ -10,8 +10,8 @@ import { GameService } from '../game.service';
 })
 export class GamePlayComponent implements OnInit {
 
-  player: Player;
-  games: Game[];
+  player: Player = new Player();
+  games: Game[] = [];
   gameId: number;
   constructor(private gameService: GameService) { }
 
@@ -19,13 +19,23 @@ export class GamePlayComponent implements OnInit {
   }
 
   startGame() {
-    this.gameService.startGame(this.player.name).subscribe(game =>
-      this.gameId = game.id);
+    this.gameService.startGame(this.player.name).subscribe(game => {
+      console.log(game);
+      this.gameId = game.id;
+      this.player = game.players[1];
+    });
   }
 
   playGame() {
-    this.gameService.playRound(this.gameId).subscribe(game =>
-      this.games.push(game)
+    this.gameService.playRound(this.gameId).subscribe(game => {
+      console.log(game);
+      this.games.push(game);
+    });
+  }
+
+  resetGame() {
+    this.gameService.resetGame(this.gameId).subscribe(game =>
+      this.games = []
     );
   }
 }

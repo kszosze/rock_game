@@ -1,17 +1,38 @@
 # Getting Started
 
-### Reference Documentation
-For further reference, please consider the following sections:
+Implementation of Rock Scissors Paper game.
 
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
-* [Spring Web Starter](https://docs.spring.io/spring-boot/docs/{bootVersion}/reference/htmlsingle/#boot-features-developing-web-applications)
-* [Spring Data JPA](https://docs.spring.io/spring-boot/docs/{bootVersion}/reference/htmlsingle/#boot-features-jpa-and-spring-data)
+Backend done in Spring Boot and frontend in a simple Angular 8.
 
-### Guides
-The following guides illustrate how to use some features concretely:
+## Game Back End
 
-* [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
-* [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
-* [Building REST services with Spring](https://spring.io/guides/tutorials/bookmarks/)
-* [Accessing Data with JPA](https://spring.io/guides/gs/accessing-data-jpa/)
+### Build
 
+Using mave you can build he project.
+
+```$mvn clean build```
+
+### Execution
+Start the backend as an usual java application
+
+```$ java -jar rock-game-server-0.0.1-SNAPSHOT.jar```
+
+This file is locate in the target folder.
+
+## Game Front End
+
+### Build
+
+Using Angular CLI you can build the project
+
+```ng build-dev```
+
+### Execution
+
+Front end can be run by
+
+```$ng serve```
+
+Access to the front end can be done by
+
+```http://localhost:880/game```

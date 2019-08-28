@@ -15,7 +15,7 @@ export class GameService {
   }
 
   public startGame(playername: string): Observable<Game> {
-    return this.http.post<Game>(this.gamesUrl + '/new' + playername, null);
+    return this.http.post<Game>(this.gamesUrl + '/new/' + playername, null);
   }
 
   public playRound(gameId: number): Observable<Game> {
@@ -26,8 +26,11 @@ export class GameService {
     return this.http.get<Game>(this.gamesUrl + '/' + gameId);
   }
 
-  public getAllGames():Observable<Game[]> {
+  public getAllGames(): Observable<Game[]> {
     return this.http.get<Game[]>(this.gamesUrl + '/all');
   }
- 
+
+  public resetGame(gameId: number): Observable<Game> {
+    return this.http.post<Game>(this.gamesUrl + '/reset/' + gameId, null);
+  }
 }
