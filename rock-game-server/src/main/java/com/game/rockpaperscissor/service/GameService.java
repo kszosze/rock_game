@@ -44,13 +44,28 @@ public class GameService {
         return new ArrayList(gamesMap.values());
     }
 
-    public void resetGame(Game game){
+    public Game resetGame(Integer gameId){
+        Game game = getGame(gameId);
+
         game.getPlayers()[0].reset();
 
         playerService.updatePlayer(game.getPlayers()[0]);
 
         game.getPlayers()[1].reset();
         playerService.updatePlayer(game.getPlayers()[1]);
+
+        return game;
+    }
+
+    public Game resetGame(Game game){
+        game.getPlayers()[0].reset();
+
+        playerService.updatePlayer(game.getPlayers()[0]);
+
+        game.getPlayers()[1].reset();
+        playerService.updatePlayer(game.getPlayers()[1]);
+
+        return game;
     }
 
     public Game playGame(Integer gameId) {

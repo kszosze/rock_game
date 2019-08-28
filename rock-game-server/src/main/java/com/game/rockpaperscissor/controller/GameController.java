@@ -9,7 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/game")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(maxAge = 3600)
 public class GameController {
 
     @Autowired
@@ -18,6 +18,11 @@ public class GameController {
     @PostMapping(path="/new/{playerName}")
     public Game startGame(@PathVariable String playerName) {
         return gameService.newGame(playerName);
+    }
+
+    @PostMapping(path = "/reset/{gameId}")
+    public Game resetGame(@PathVariable Integer gameId) {
+        return gameService.resetGame(gameId);
     }
 
     @PutMapping(path = "/{gameId}")
@@ -34,4 +39,6 @@ public class GameController {
     public List<Game> getGames() {
         return gameService.getGames();
     }
+
+
 }
