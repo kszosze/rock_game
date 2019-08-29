@@ -1,6 +1,7 @@
 package com.game.rockpaperscissor.controller;
 
 import com.game.rockpaperscissor.model.Game;
+import com.game.rockpaperscissor.model.GameStats;
 import com.game.rockpaperscissor.service.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -40,5 +41,7 @@ public class GameController {
         return gameService.getGames();
     }
 
+    @GetMapping(path = "/stats")
+    public List<GameStats> getGameStats() { return gameService.getGamesStats(); }
 
 }

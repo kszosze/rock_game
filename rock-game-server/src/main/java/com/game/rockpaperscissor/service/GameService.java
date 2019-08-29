@@ -1,17 +1,20 @@
 package com.game.rockpaperscissor.service;
 
 import com.game.rockpaperscissor.data.ChoiceEnum;
+import com.game.rockpaperscissor.data.ResultEnum;
 import com.game.rockpaperscissor.data.StatsEnum;
 import com.game.rockpaperscissor.model.Game;
-import com.game.rockpaperscissor.data.ResultEnum;
+import com.game.rockpaperscissor.model.GameStats;
 import com.game.rockpaperscissor.model.Player;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.stream.Stream;
 
 import static com.game.rockpaperscissor.data.ChoiceEnum.ROCK;
 import static com.game.rockpaperscissor.data.ResultEnum.DRAW;
 import static com.game.rockpaperscissor.data.ResultEnum.WIN;
+import static java.util.stream.Collectors.toList;
 
 @Service
 public class GameService {
@@ -114,5 +117,15 @@ public class GameService {
 
     public Game getGame(Integer gameId) {
         return gamesMap.get(gameId);
+    }
+
+    public List<GameStats> getGamesStats() {
+
+        return gamesMap.values().stream().map(game ->
+            GameStats.builder().playersNames(
+                    Stream.of(game.getPlayers()).map(Player::getName).collect(toList()))
+                    .rounds(game.getRounds())
+                    .stats(new ArrayList<>(game.getGameStats().values())).build()
+        ).collect(toList());
     }
 }
