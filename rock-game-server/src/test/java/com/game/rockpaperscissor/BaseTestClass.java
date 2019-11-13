@@ -7,6 +7,7 @@ import com.game.rockpaperscissor.model.GameStats;
 import com.game.rockpaperscissor.model.Player;
 import com.game.rockpaperscissor.service.GameService;
 import io.restassured.module.mockmvc.RestAssuredMockMvc;
+import java.util.List;
 import org.assertj.core.util.Arrays;
 import org.junit.Before;
 import org.junit.runner.RunWith;
@@ -20,7 +21,6 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.test.web.servlet.setup.StandaloneMockMvcBuilder;
 
 import java.util.EnumMap;
-import java.util.List;
 import java.util.Map;
 
 import static com.game.rockpaperscissor.data.ChoiceEnum.ROCK;
@@ -36,10 +36,10 @@ import static org.mockito.Mockito.when;
 @AutoConfigureMessageVerifier
 public class BaseTestClass {
 
-    public static final String RETRO = "retro";
-    public static final String PLAYERROCK = "playerrock";
-    public static final String PLAYER_1 = "player1";
-    public static final String PLAYER_2 = "player2";
+    private static final String RETRO = "retro";
+    private static final String PLAYERROCK = "playerrock";
+    private static final String PLAYER_1 = "player1";
+    private static final String PLAYER_2 = "player2";
     @Autowired
     private GameController gameController;
 

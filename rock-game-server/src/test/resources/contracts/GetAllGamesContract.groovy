@@ -12,22 +12,22 @@ Contract.make {
                 id: $(p(positiveInt()), c(1)),
                 rounds: $(p(positiveInt()), c(1)),
                 players: [
-                        [
-                            id: $(p(positiveInt()), c(1)),
-                            name: $(p(anyNonEmptyString()),c("player1")),
-                            lastMovement: $(p(regex("ROCK|SCISSORS|PAPER")), c("ROCK")),
-                            wins: $(p(anyInteger()), c(0)),
-                            draws: $(p(anyInteger()), c(1)),
-                            rounds: $(p(anyInteger()), c(1))
-                        ],
-                        [
-                                id: $(p(positiveInt()), c(2)),
-                                name: $(p(anyNonEmptyString()),c("player2")),
-                                lastMovement: $(p(regex("ROCK|SCISSORS|PAPER")), c("ROCK")),
-                                wins: $(p(anyInteger()), c(0)),
-                                draws: $(p(anyInteger()), c(1)),
-                                rounds: $(p(anyInteger()), c(1))
-                        ]
+                    [
+                        id: $(p(positiveInt()), c(1)),
+                        name: $(p(anyNonEmptyString()),c("player1")),
+                        lastMovement: $(p(regex("ROCK|SCISSORS|PAPER")), c("ROCK")),
+                        wins: $(p(anyInteger()), c(0)),
+                        draws: $(p(anyInteger()), c(1)),
+                        rounds: $(p(anyInteger()), c(1))
+                    ],
+                    [
+                        id: $(p(positiveInt()), c(2)),
+                        name: $(p(anyNonEmptyString()),c("player2")),
+                        lastMovement: $(p(regex("ROCK|SCISSORS|PAPER")), c("ROCK")),
+                        wins: $(p(anyInteger()), c(0)),
+                        draws: $(p(anyInteger()), c(1)),
+                        rounds: $(p(anyInteger()), c(1))
+                    ]
                 ],
                 gameStats: [
                         WINS_PLAYER_1: $(p(anyInteger()), c(0)),

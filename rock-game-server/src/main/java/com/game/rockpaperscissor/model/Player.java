@@ -13,11 +13,9 @@ public class Player {
     private ChoiceEnum lastMovement;
     @Builder.Default private Integer wins = 0;
     @Builder.Default private Integer draws = 0;
-    @Builder.Default private Integer rounds = 0;
 
     public void setLastMovement(ChoiceEnum choice) {
         this.lastMovement = choice;
-        this.rounds++;
     }
 
     public void incWins() {
@@ -31,7 +29,6 @@ public class Player {
     public void reset() {
         wins = 0;
         draws = 0;
-        rounds = 0;
         lastMovement = null;
     }
 }
