@@ -12,34 +12,32 @@ Contract.make {
               id: 1,
               rounds: 3,
               playersNames: [
-                      "Tom",
-                      "rocky"
+                  "Tom",
+                  "rocky"
               ],
               stats: [1,2,3,4,5]
             ],[
                 id: 2,
                 rounds: 3,
                 playersNames: [
-                       "TomA",
-                        "rockyA"
+                   "TomA",
+                    "rockyA"
                 ],
                 stats: [10, 20, 30, 40, 50]
             ],[
                 id: 3,
                 rounds: 3,
                 playersNames: [
-                       "TomB",
-                       "rockyB"
+                   "TomB",
+                   "rockyB"
                 ],
                 stats: [100, 200, 300, 400, 500]
             ]])
         bodyMatchers {
             jsonPath('$[*].stats', byType {
-                // results in verification of size of array (min 0)
                 minOccurrence(0)
             })
             jsonPath('$[*].playersNames', byType {
-                // results in verification of size of array (min 0)
                 minOccurrence(0)
             })
         }

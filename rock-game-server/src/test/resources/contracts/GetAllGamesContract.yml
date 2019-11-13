@@ -1,0 +1,78 @@
+description: |
+    should return the list of games
+request:
+    method: GET
+    url: /game/all
+    headers:
+        Content-Type: application/json
+response:
+    status: 200
+    body:
+       - id: 1
+         rounds: 1
+         players:
+           - id: 1
+             name: player1
+             lastMovement: ROCK
+             wins: 0
+             draws: 1
+           - id: 2
+             name: player2
+             lastMovement: ROCK
+             wins: 0
+             draws: 1
+         gameStats:
+           WINS_PLAYER_1: 0
+           WINS_PLAYER_2: 0
+           DRAWS: 1
+       - id: 1
+         rounds: 1
+         players:
+           - id: 1
+             name: player1
+             lastMovement: ROCK
+             wins: 0
+             draws: 1
+           - id: 2
+             name: player2
+             lastMovement: ROCK
+             wins: 0
+             draws: 1
+         gameStats:
+           WINS_PLAYER_1: 0
+           WINS_PLAYER_2: 0
+           DRAWS: 1
+    matchers:
+        body:
+            - path: $[*].id
+              type: by_regex
+              value: "[0-9]*"
+            - path: $[*].rounds
+              type: by_regex
+              value: "[0-9]+"
+            - path: $[*].players[*].id
+              type: by_regex
+              value: "[0-9]*"
+            - path: $[*].players[*].name
+              type: by_regex
+              predefined: non_blank
+            - path: $[*].players[*].lastMovement
+              type: by_regex
+              value: "ROCK|SCISSORS|PAPER"
+            - path: $[*].players[*].wins
+              type: by_regex
+              value: "[0-9]*"
+            - path: $[*].players[*].draws
+              type: by_regex
+              value: "[0-9]*"
+            - path: $[*].gameStats.WINS_PLAYER_1
+              type: by_regex
+              value: "[0-9]*"
+            - path: $[*].gameStats.WINS_PLAYER_2
+              type: by_regex
+              value: "[0-9]*"
+            - path: $[*].gameStats.DRAWS
+              type: by_regex
+              value: "[0-9]*"
+    headers:
+        Content-Type: application/json;charset=UTF-8

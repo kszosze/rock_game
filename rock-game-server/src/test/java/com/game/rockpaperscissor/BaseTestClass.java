@@ -7,7 +7,6 @@ import com.game.rockpaperscissor.model.GameStats;
 import com.game.rockpaperscissor.model.Player;
 import com.game.rockpaperscissor.service.GameService;
 import io.restassured.module.mockmvc.RestAssuredMockMvc;
-import java.util.List;
 import org.assertj.core.util.Arrays;
 import org.junit.Before;
 import org.junit.runner.RunWith;
@@ -26,6 +25,7 @@ import java.util.Map;
 import static com.game.rockpaperscissor.data.ChoiceEnum.ROCK;
 import static com.game.rockpaperscissor.data.ChoiceEnum.SCISSORS;
 import static java.util.Collections.singletonList;
+import static java.util.List.of;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 
@@ -37,7 +37,7 @@ import static org.mockito.Mockito.when;
 public class BaseTestClass {
 
     private static final String RETRO = "retro";
-    private static final String PLAYERROCK = "playerrock";
+    private static final String PLAYER_ROCK = "playerrock";
     private static final String PLAYER_1 = "player1";
     private static final String PLAYER_2 = "player2";
     @Autowired
@@ -59,8 +59,8 @@ public class BaseTestClass {
     }
 
     private void getGameId1() {
-        Player player1 = Player.builder().id(1).name(PLAYER_1).lastMovement(ROCK).rounds(1).wins(0).draws(1).build();
-        Player player2 = Player.builder().id(2).name(PLAYER_2).lastMovement(ROCK).rounds(1).wins(0).draws(1).build();
+        Player player1 = Player.builder().id(1).name(PLAYER_1).lastMovement(ROCK).wins(0).draws(1).build();
+        Player player2 = Player.builder().id(2).name(PLAYER_2).lastMovement(ROCK).wins(0).draws(1).build();
         Map<StatsEnum, Integer> gameStats = new EnumMap<>(StatsEnum.class);
         gameStats.put(StatsEnum.WINS_PLAYER_1,0);
         gameStats.put(StatsEnum.WINS_PLAYER_2,0);
@@ -71,8 +71,8 @@ public class BaseTestClass {
     }
 
     private void getAllGames() {
-        Player player1 = Player.builder().id(1).name(PLAYER_1).lastMovement(ROCK).rounds(1).wins(0).draws(1).build();
-        Player player2 = Player.builder().id(2).name(PLAYER_2).lastMovement(ROCK).rounds(1).wins(0).draws(1).build();
+        Player player1 = Player.builder().id(1).name(PLAYER_1).lastMovement(ROCK).wins(0).draws(1).build();
+        Player player2 = Player.builder().id(2).name(PLAYER_2).lastMovement(ROCK).wins(0).draws(1).build();
         Map<StatsEnum, Integer> gameStats = new EnumMap<>(StatsEnum.class);
         gameStats.put(StatsEnum.WINS_PLAYER_1, 0);
         gameStats.put(StatsEnum.WINS_PLAYER_2, 0);
@@ -83,7 +83,7 @@ public class BaseTestClass {
     }
 
     private void postNewGame() {
-        Player player1 = Player.builder().id(1).name(PLAYERROCK).build();
+        Player player1 = Player.builder().id(1).name(PLAYER_ROCK).build();
         Player player2 = Player.builder().id(2).name(RETRO).build();
         Game game = Game.builder().id(1).players(Arrays.array(player1, player2))
                 .build();
@@ -91,8 +91,8 @@ public class BaseTestClass {
     }
 
     private void playGameId1() {
-        Player player1 = Player.builder().id(1).name(PLAYERROCK).lastMovement(ROCK).rounds(1).wins(1).draws(0).build();
-        Player player2 = Player.builder().id(2).name(RETRO).lastMovement(SCISSORS).rounds(1).wins(0).draws(0).build();
+        Player player1 = Player.builder().id(1).name(PLAYER_ROCK).lastMovement(ROCK).wins(1).draws(0).build();
+        Player player2 = Player.builder().id(2).name(RETRO).lastMovement(SCISSORS).wins(0).draws(0).build();
         Map<StatsEnum, Integer> gameStats = new EnumMap<>(StatsEnum.class);
         gameStats.put(StatsEnum.WINS_PLAYER_1, 1);
         gameStats.put(StatsEnum.WINS_PLAYER_2, 0);
@@ -103,27 +103,27 @@ public class BaseTestClass {
     }
 
     private void getGameStats() {
-        when(gameService.getGamesStats()).thenReturn(List.of(
+        when(gameService.getGamesStats()).thenReturn(of(
         GameStats
                 .builder()
                 .id(1)
-                .stats(List.of(1, 2, 3, 4, 5))
+                .stats(of(1, 2, 3, 4, 5))
                 .rounds(3)
-                .playersNames(List.of("Tom","rocky"))
+                .playersNames(of("Tom","rocky"))
                 .build(),
         GameStats
                 .builder()
                 .id(2)
-                .stats(List.of(10, 20, 30, 40, 50))
+                .stats(of(10, 20, 30, 40, 50))
                 .rounds(3)
-                .playersNames(List.of("TomA","rockyA"))
+                .playersNames(of("TomA","rockyA"))
                 .build(),
         GameStats
                 .builder()
                 .id(3)
-                .stats(List.of(100, 200, 300, 400, 500))
+                .stats(of(100, 200, 300, 400, 500))
                 .rounds(3)
-                .playersNames(List.of("TomB","rockyB"))
+                .playersNames(of("TomB","rockyB"))
                 .build()
         ));
     }

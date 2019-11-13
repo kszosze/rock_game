@@ -1,0 +1,4 @@
+stubrunner:
+  stubs-mode: LOCAL
+  ids:
+    - com.game:rock-paper-scissor:+:9876
