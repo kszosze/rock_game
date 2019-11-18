@@ -22,7 +22,8 @@
 	</properties>
 
 	<modules>
-		<module>rock-game-server</module>
+        <module>contracts</module>
+        <module>rock-game-server</module>
 		<module>rock-game-ui</module>
         <module>rock-game-player</module>
     </modules>

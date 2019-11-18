@@ -1,4 +1,4 @@
-package contracts
+package contracts.com.game.rockpapersscissor.rest
 
 import org.springframework.cloud.contract.spec.Contract
 Contract.make {

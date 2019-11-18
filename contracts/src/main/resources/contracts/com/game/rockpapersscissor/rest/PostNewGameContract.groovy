@@ -1,11 +1,11 @@
-package contracts
+package contracts.com.game.rockpapersscissor.rest
 
 import org.springframework.cloud.contract.spec.Contract
 Contract.make {
     description "post a name to create a new game for a new player"
     request{
         method POST()
-        url $(c("/game/new/[a-zA-Z]+/"), p("/game/new/retro"))
+        url $(c(regex('/game/new/[a-zA-Z]+')), p("/game/new/retro"))
     }
     response {
         body([
@@ -33,6 +33,9 @@ Contract.make {
                 DRAWS: $(p(anyInteger()), c(0))
             ]
         ])
+        headers {
+            contentType(applicationJson())
+        }
         status 200
     }
 }

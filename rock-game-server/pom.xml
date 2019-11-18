@@ -60,6 +60,11 @@
                 <version>2.1.1.RELEASE</version>
                 <extensions>true</extensions>
                 <configuration>
+                    <contractDependency>
+                        <groupId>com.game</groupId>
+                        <artifactId>contracts</artifactId>
+                    </contractDependency>
+                    <contractsMode>LOCAL</contractsMode>
                     <baseClassForTests>
                         com.game.rockpaperscissor.BaseTestClass
                     </baseClassForTests>

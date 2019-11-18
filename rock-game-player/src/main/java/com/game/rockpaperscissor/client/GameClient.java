@@ -2,27 +2,28 @@ package com.game.rockpaperscissor.client;
 
 import com.game.rockpaperscissor.model.Game;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 
 import java.util.List;
 
-@FeignClient("game")
+@FeignClient(name = "gameClient")
 public interface GameClient {
 
-    @RequestMapping(method = RequestMethod.POST, value = "/new/{playerName}")
+    @PostMapping(value = "/game/new/{playerName}")
     Game createPlayer(@PathVariable("playerName")String playerName);
 
-    @RequestMapping(method = RequestMethod.PUT, value = "/{gameId}")
+    @PutMapping(value = "/game/{gameId}")
     Game startGame(@PathVariable("gameId") Integer gameId);
 
-    @RequestMapping(method = RequestMethod.GET, value = "/{gameId}")
+    @GetMapping(value = "/game/{gameId}")
     Game getGame(@PathVariable("gameId") Integer gameId);
 
-    @RequestMapping(method = RequestMethod.GET, value = "/stats")
+    @GetMapping(value = "/game/stats")
     List<Game> getAllGameStats();
 
-    @RequestMapping(method = RequestMethod.GET, value = "/all")
+    @GetMapping(value = "/game/all")
     List<Game> getAllGame();
 }
