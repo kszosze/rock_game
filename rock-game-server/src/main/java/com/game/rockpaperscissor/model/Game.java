@@ -16,7 +16,7 @@ public class Game {
     @Builder.Default private Integer rounds = 0;
     private Player[] players;
     private ResultEnum lastRoundResult;
-    @Builder.Default private Map<StatsEnum, Integer> gameStats = new EnumMap<StatsEnum, Integer>(StatsEnum.class) {{
+    @Builder.Default private Map<StatsEnum, Integer> gameStats = new EnumMap<>(StatsEnum.class) {{
         put(StatsEnum.WINS_PLAYER_1, 0);
         put(StatsEnum.WINS_PLAYER_2, 0);
         put(StatsEnum.DRAWS, 0);

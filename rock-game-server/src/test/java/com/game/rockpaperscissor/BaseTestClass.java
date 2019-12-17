@@ -1,6 +1,7 @@
 package com.game.rockpaperscissor;
 
 import com.game.rockpaperscissor.controller.GameController;
+import com.game.rockpaperscissor.data.ResultEnum;
 import com.game.rockpaperscissor.data.StatsEnum;
 import com.game.rockpaperscissor.model.Game;
 import com.game.rockpaperscissor.model.GameStats;
@@ -14,7 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.cloud.contract.verifier.messaging.boot.AutoConfigureMessageVerifier;
-import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.test.web.servlet.setup.StandaloneMockMvcBuilder;
@@ -31,8 +31,7 @@ import static org.mockito.Mockito.when;
 
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
-@DirtiesContext
+@SpringBootTest(classes = RockPaperScissorApplication.class, webEnvironment = SpringBootTest.WebEnvironment.MOCK)
 @AutoConfigureMessageVerifier
 public class BaseTestClass {
 
@@ -65,7 +64,7 @@ public class BaseTestClass {
         gameStats.put(StatsEnum.WINS_PLAYER_1,0);
         gameStats.put(StatsEnum.WINS_PLAYER_2,0);
         gameStats.put(StatsEnum.DRAWS,1);
-        Game game = Game.builder().id(1).rounds(1).players(Arrays.array(player1, player2))
+        Game game = Game.builder().id(1).rounds(1).lastRoundResult(ResultEnum.LOOSE).players(Arrays.array(player1, player2))
                 .gameStats(gameStats).build();
         when(gameService.getGame(eq(1))).thenReturn(game);
     }
@@ -77,7 +76,7 @@ public class BaseTestClass {
         gameStats.put(StatsEnum.WINS_PLAYER_1, 0);
         gameStats.put(StatsEnum.WINS_PLAYER_2, 0);
         gameStats.put(StatsEnum.DRAWS, 1);
-        Game game = Game.builder().id(1).rounds(1).players(Arrays.array(player1, player2))
+        Game game = Game.builder().id(1).rounds(1).lastRoundResult(ResultEnum.WIN).players(Arrays.array(player1, player2))
                 .gameStats(gameStats).build();
         when(gameService.getGames()).thenReturn(singletonList(game));
     }

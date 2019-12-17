@@ -18,7 +18,7 @@
 	<properties>
 		<node.version>v10.16.0</node.version>
 		<npm.version>6.11.2</npm.version>
-        <spring-cloud.version>2.1.1.RELEASE</spring-cloud.version>
+    <spring-cloud.version>2.1.1.RELEASE</spring-cloud.version>
 	</properties>
 
 	<modules>

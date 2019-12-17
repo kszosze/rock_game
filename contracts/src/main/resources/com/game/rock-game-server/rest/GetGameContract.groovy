@@ -1,4 +1,4 @@
-package contracts.com.game.rockpapersscissor.rest
+package com.game.rockpapersscissor.rest
 
 import org.springframework.cloud.contract.spec.Contract
 Contract.make {
@@ -11,6 +11,7 @@ Contract.make {
         body([
             id: $(p(positiveInt()), c(1)),
             rounds: $(p(positiveInt()), c(1)),
+            lastRoundResult: $(p(regex("[WIN|DRAW|LOOSE]+")), c("WIN")),
             players: [
                 [
                     id: $(p(positiveInt()), c(1)),
