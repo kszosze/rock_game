@@ -5,7 +5,7 @@ Contract.make {
     description "should return a list of games stats"
     request{
         method GET()
-        url("/game/stats")
+        url "/game/stats"
     }
     response {
         body([[

@@ -1,17 +1,18 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Game } from './game';
 import { Observable } from 'rxjs';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GameService {
 
-  private gamesUrl: string;
+  private readonly gamesUrl: string;
 
   constructor(private http: HttpClient) {
-    this.gamesUrl = 'http://localhost:8080/game';
+    this.gamesUrl = environment.baseUrl + '/game';
   }
 
   public startGame(playername: string): Observable<Game> {

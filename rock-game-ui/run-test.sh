@@ -16,7 +16,7 @@ sleep ${WAIT_TIME}
 # Execute tests
 echo "Working around certificate issues" && npm config set strict-ssl false
 yes | npm install || echo "Failed to install packages"
-node app
+npm run start-test
 
 # Stop any running images
 docker stop $(docker ps -a | grep spring-cloud-contract | awk '{print $1}') && echo "Killed a running container" || echo "Nothing running"
