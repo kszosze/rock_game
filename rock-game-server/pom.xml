@@ -44,6 +44,11 @@
 			<artifactId>contracts</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+        <dependency>
+            <groupId>com.game</groupId>
+            <artifactId>contract-utils</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
 	</dependencies>
 
 	<build>
@@ -82,6 +87,11 @@
 					</contractDependency>
 				</configuration>
 				<dependencies>
+                    <dependency>
+                        <groupId>com.game</groupId>
+                        <artifactId>contract-utils</artifactId>
+                        <version>0.0.1-SNAPSHOT</version>
+                    </dependency>
 					<dependency>
 						<groupId>com.game</groupId>
 						<artifactId>contracts</artifactId>

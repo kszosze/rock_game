@@ -1,4 +1,4 @@
-package com.game.rockpapersscissor.rest
+package com.game.rockgameserver.rest
 
 import org.springframework.cloud.contract.spec.Contract
 Contract.make {
@@ -9,29 +9,44 @@ Contract.make {
     }
     response {
         body([[
-              id: 1,
-              rounds: 3,
+              id: $(p(positiveInt()), c(1)),
+              rounds: $(p(positiveInt()), c(3)),
               playersNames: [
-                  "Tom",
-                  "rocky"
+                  $(p(anyNonEmptyString()), c("Tom")),
+                  $(p(anyNonEmptyString()), c("rocky"))
               ],
-              stats: [1,2,3,4,5]
+              stats: [
+                  $(p(anyPositiveInt()),c(1)),
+                  $(p(anyPositiveInt()),c(2)),
+                  $(p(anyPositiveInt()),c(3)),
+                  $(p(anyPositiveInt()),c(4)),
+                  $(p(anyPositiveInt()),c(5))]
             ],[
-                id: 2,
-                rounds: 3,
+                id: $(p(positiveInt()), c(2)),
+                rounds: $(p(positiveInt()), c(3)),
                 playersNames: [
-                   "TomA",
-                    "rockyA"
+                    $(p(anyNonEmptyString()), c("TomA")),
+                    $(p(anyNonEmptyString()), c("rockyA"))
                 ],
-                stats: [10, 20, 30, 40, 50]
+                stats: [
+                    $(p(anyPositiveInt()),c(10)),
+                    $(p(anyPositiveInt()),c(20)),
+                    $(p(anyPositiveInt()),c(30)),
+                    $(p(anyPositiveInt()),c(40)),
+                    $(p(anyPositiveInt()),c(50))]
             ],[
-                id: 3,
-                rounds: 3,
+                id: $(p(positiveInt()), c(3)),
+                rounds: $(p(positiveInt()), c(3)),
                 playersNames: [
-                   "TomB",
-                   "rockyB"
+                    $(p(anyNonEmptyString()), c("TomB")),
+                    $(p(anyNonEmptyString()), c("rockyB"))
                 ],
-                stats: [100, 200, 300, 400, 500]
+                stats: [
+                    $(p(anyPositiveInt()),c(100)),
+                    $(p(anyPositiveInt()),c(200)),
+                    $(p(anyPositiveInt()),c(300)),
+                    $(p(anyPositiveInt()),c(400)),
+                    $(p(anyPositiveInt()),c(500))]
             ]])
         bodyMatchers {
             jsonPath('$[*].stats', byType {

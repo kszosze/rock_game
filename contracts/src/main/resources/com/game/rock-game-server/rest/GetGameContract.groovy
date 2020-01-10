@@ -1,6 +1,7 @@
 package com.game.rockpapersscissor.rest
 
 import org.springframework.cloud.contract.spec.Contract
+
 Contract.make {
     description "should return a game matching the Id"
     request{

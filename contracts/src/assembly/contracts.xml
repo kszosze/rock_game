@@ -12,10 +12,17 @@
       <outputDirectory>/</outputDirectory>
       <useDefaultExcludes>true</useDefaultExcludes>
       <excludes>
-        <exclude>**/${project.build.directory}/**</exclude>
+        <exclude>**/${project.build.directory}/test-classes/**</exclude>
+        <exclude>**/${project.build.directory}/generated-sources/**</exclude>
+        <exclude>**/${project.build.directory}/archive-tmp</exclude>
+        <exclude>**/${project.build.directory}/generated-test-sources/**</exclude>
+        <exclude>**/${project.build.directory}/maven-status/**</exclude>
         <exclude>mvnw</exclude>
         <exclude>mvnw.cmd</exclude>
         <exclude>.mvn/**</exclude>
+        <exclude>**/assembly/**</exclude>
+        <exclude>**/templates/**</exclude>
+        <exclude>**/test/**</exclude>
       </excludes>
     </fileSet>
   </fileSets>
