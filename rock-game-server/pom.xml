@@ -41,14 +41,9 @@
 		</dependency>
 		<dependency>
 			<groupId>com.game</groupId>
-			<artifactId>contracts</artifactId>
+			<artifactId>contracts-external</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-        <dependency>
-            <groupId>com.game</groupId>
-            <artifactId>contract-utils</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
 	</dependencies>
 
 	<build>
@@ -83,7 +78,7 @@
 					</baseClassForTests>
 					<contractDependency>
 						<groupId>com.game</groupId>
-						<artifactId>contracts</artifactId>
+						<artifactId>contracts-external</artifactId>
 					</contractDependency>
 				</configuration>
 				<dependencies>
@@ -94,7 +89,7 @@
                     </dependency>
 					<dependency>
 						<groupId>com.game</groupId>
-						<artifactId>contracts</artifactId>
+						<artifactId>contracts-external</artifactId>
 						<version>0.0.1-SNAPSHOT</version>
 						<scope>compile</scope>
 					</dependency>

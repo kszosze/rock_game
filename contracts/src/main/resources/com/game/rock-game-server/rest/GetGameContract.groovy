@@ -1,4 +1,4 @@
-package com.game.rockpapersscissor.rest
+package com.game.rockgameserver.rest
 
 import org.springframework.cloud.contract.spec.Contract
 

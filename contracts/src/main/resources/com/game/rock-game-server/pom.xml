@@ -3,6 +3,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.2.4.RELEASE</version>
+        <relativePath/>
+    </parent>
+
     <groupId>com.game</groupId>
     <artifactId>contracts-external</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -13,7 +20,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
-        <spring-cloud-contract.version>2.1.3.BUILD-SNAPSHOT</spring-cloud-contract.version>
+        <spring-cloud-contract.version>2.2.2.BUILD-SNAPSHOT</spring-cloud-contract.version>
         <spring-cloud-release.version>Hoxton.RELEASE</spring-cloud-release.version>
         <skipTests>true</skipTests>
         <excludeBuildFolders>true</excludeBuildFolders>
@@ -35,6 +42,7 @@
         <dependency>
             <groupId>com.game</groupId>
             <artifactId>contract-utils</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
     <build>
@@ -45,9 +53,15 @@
                 <version>${spring-cloud-contract.version}</version>
                 <extensions>true</extensions>
                 <configuration>
-                    <!-- By default it would search under src/test/resources/ -->
                     <contractsDirectory>${project.basedir}</contractsDirectory>
                 </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.game</groupId>
+                        <artifactId>contract-utils</artifactId>
+                        <version>0.0.1-SNAPSHOT</version>
+                    </dependency>
+                </dependencies>
             </plugin>
         </plugins>
     </build>

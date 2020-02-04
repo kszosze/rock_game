@@ -4,12 +4,12 @@ set -o errexit
 
 WAIT_TIME="${WAIT_TIME:-10}"
 
-# Stop any running images
-docker stop $(docker ps -a | grep spring-cloud-contract | awk '{print $1}') && echo "Killed a running container" || echo "Nothing running"
 
 # Run Stub Runner
 echo "Running Stub Runner Docker Image"
-nohup ./run_stubrunner_as_docker.sh &
+# nohup ./run_stubrunner_as_docker.sh &
+nohup ./run_stubrunner_as_process.sh &
+
 echo "Waiting for the image to start for [${WAIT_TIME}] seconds"
 sleep ${WAIT_TIME}
 

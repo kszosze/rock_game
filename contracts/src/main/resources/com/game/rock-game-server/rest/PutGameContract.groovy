@@ -1,6 +1,7 @@
-package com.game.rockpapersscissor.rest
+package com.game.rockgameserver.rest
 
 import org.springframework.cloud.contract.spec.Contract
+
 Contract.make {
     description "put a game id in order to play a round"
     request{

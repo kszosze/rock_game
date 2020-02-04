@@ -1,6 +1,7 @@
-package com.game.rockpapersscissor.rest
+package com.game.rockgameserver.rest
 
 import org.springframework.cloud.contract.spec.Contract
+
 Contract.make {
     description "post a name to create a new game for a new player"
     request{

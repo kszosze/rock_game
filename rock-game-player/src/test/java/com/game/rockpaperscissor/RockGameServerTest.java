@@ -3,15 +3,21 @@ package com.game.rockpaperscissor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.game.rockpaperscissor.model.Game;
 import com.game.rockpaperscissor.service.PlayService;
+import com.netflix.loadbalancer.Server;
+import com.netflix.loadbalancer.ServerList;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.test.json.JacksonTester;
 import org.springframework.cloud.contract.stubrunner.spring.AutoConfigureStubRunner;
 import org.springframework.cloud.contract.stubrunner.spring.StubRunnerProperties;
+import org.springframework.cloud.netflix.ribbon.StaticServerList;
+import org.springframework.context.annotation.Bean;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
@@ -20,7 +26,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
-@AutoConfigureStubRunner(stubsMode = StubRunnerProperties.StubsMode.LOCAL, ids = "com.game:contracts:+:stubs:8095")
+@AutoConfigureStubRunner(stubsMode = StubRunnerProperties.StubsMode.LOCAL, ids = "com.game:contracts-external:+:stubs:8095")
+@ContextConfiguration(classes = { RockGameServerTest.LocalRibbonClientConfiguration.class})
 @ActiveProfiles("test")
 public class RockGameServerTest {
 
@@ -60,5 +67,14 @@ public class RockGameServerTest {
         List<Game> gameList = playService.getAllGame();
         assertThat(gameList).isNotEmpty();
         assertThat(gameList).hasSize(3);
+    }
+
+    @TestConfiguration
+    public static class LocalRibbonClientConfiguration {
+
+        @Bean
+        public ServerList<Server> ribbonServerList() {
+            return new StaticServerList<>(new Server("localhost", 8095));
+        }
     }
 }

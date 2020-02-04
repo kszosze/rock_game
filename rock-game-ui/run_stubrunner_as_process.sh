@@ -22,4 +22,4 @@ if [ ! -f "target/stub-runner.jar" ]; then
 else
     echo "Stub Runner already downloaded"
 fi
-java -jar target/stub-runner.jar --stubrunner.stubsMode="LOCAL" --stubrunner.ids="com.game:rock-paper-scissor:+:9876" --server.port=8750
+java -Dloader.path=target/lib -jar target/stub-runner.jar --stubrunner.stubsMode="LOCAL" --stubrunner.ids="com.game:contracts-external:+:9876" --server.port=8750

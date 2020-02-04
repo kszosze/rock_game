@@ -23,6 +23,7 @@
         <exclude>**/assembly/**</exclude>
         <exclude>**/templates/**</exclude>
         <exclude>**/test/**</exclude>
+        <exclude>**/src/**</exclude>
       </excludes>
     </fileSet>
   </fileSets>

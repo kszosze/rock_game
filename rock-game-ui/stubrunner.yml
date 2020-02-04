@@ -1,4 +1,4 @@
 stubrunner:
   stubs-mode: LOCAL
   ids:
-    - com.game:rock-paper-scissor:+:9876
+    - com.game:contracts-external:0.0.1-SNAPSHOT:stubs:9876
